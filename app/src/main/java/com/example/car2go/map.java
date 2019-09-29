@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ public class map extends FragmentActivity implements OnMapReadyCallback {
         }
             Task<Location> task = fusedLocationProviderClient.getLastLocation();
             task.addOnSuccessListener(new OnSuccessListener<Location>() {
+
                 @Override
                 public void onSuccess(Location location) {
                     if(location !=null){
@@ -56,6 +58,8 @@ public class map extends FragmentActivity implements OnMapReadyCallback {
                         Toast.makeText(getApplicationContext(),currentLocation.getLatitude()+""+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
                         SupportMapFragment supportMapFragment=(SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.google_map);
                         supportMapFragment.getMapAsync(map.this);
+                        Log.d("hhhhhhhh","");
+
                     }
                 }
             });

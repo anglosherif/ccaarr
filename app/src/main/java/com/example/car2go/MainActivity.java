@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
 btnMap.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        Intent intent = new Intent(MainActivity.this, MapsAct.class);
         startActivity(intent);
     }
 })
