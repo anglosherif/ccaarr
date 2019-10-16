@@ -48,11 +48,12 @@ public class MainActivity extends Activity {
         // Displaying the user details on the screen
         txtName.setText(name);
         txtEmail.setText(email);
-btnMap.setOnClickListener(new View.OnClickListener() {
+        btnMap.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(MainActivity.this, MapsAct.class);
+        Intent intent = new Intent(MainActivity.this, retrieve.class);
         startActivity(intent);
+        finish();
     }
 })
 
@@ -83,3 +84,5 @@ btnMap.setOnClickListener(new View.OnClickListener() {
         finish();
     }
 }
+
+

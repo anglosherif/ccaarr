@@ -13,5 +13,7 @@
     <string name="name">Fullname</string>
     <string name="title_activity_map">map</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps_testing">Map</string>
+
 
 </resources>
