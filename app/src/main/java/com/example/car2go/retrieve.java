@@ -113,6 +113,7 @@ public static double longtt_ofcar;
      * function to verify login details in mysql db
      */
     private void loadCars() {
+
         // Tag used to cancel the request
         String tag_string_req = "req_car";
 
@@ -151,14 +152,17 @@ public static double longtt_ofcar;
                         car_objectList.add(cars1);
 
 
-                    }
-                    Collections.sort(car_objectList, new Comparator<car_object>() {
+                    }  Collections.sort(car_objectList, new Comparator<car_object>() {
                         @Override
                         public int compare(car_object o1, car_object o2) {
-                            o2.getDistance().compareTo(o1.getDistance());
-                            return 1;
+                            String a1=o1.getDistance()+"";
+                            String a2=o2.getDistance()+"";
+                           // o1.getDistance().compareTo(o2.getDistance());
+                            return  a1.compareTo(a2);
+
                         }
                     });
+
 
                     listView.setAdapter(customAdapter);
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
