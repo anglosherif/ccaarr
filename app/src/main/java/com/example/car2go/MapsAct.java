@@ -30,6 +30,8 @@ public class MapsAct extends AppCompatActivity implements
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     private GoogleMap mMap;
+    private GoogleMap xmap;
+
     // Used for selecting the current place.
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
@@ -79,7 +81,7 @@ public class MapsAct extends AppCompatActivity implements
         //mMap.setMinZoomPreference(11);
         LatLng car_location = new LatLng(retrieve.lat_ofcar, retrieve.longtt_ofcar);
         mMap.addMarker(new MarkerOptions().position(car_location).title(""+retrieve.model_in_map));
-
+//getDeviceLocation();
     }
 
     private void enableMyLocationIfPermitted() {
@@ -112,6 +114,10 @@ public class MapsAct extends AppCompatActivity implements
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     enableMyLocationIfPermitted();
+                   // x=location.getLatitude();
+                   // y=location.getLongitude();
+
+
                 } else {
                     showDefaultLocation();
                 }
@@ -179,13 +185,15 @@ public class MapsAct extends AppCompatActivity implements
         try {
             mLocationPermissionGranted =true;
             if (mLocationPermissionGranted) {
-                Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
+                final Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
                 locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
+                            LatLng mine=new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
+                            mMap.addMarker(new MarkerOptions().position(mine));
 
                         } else {
                             Log.d("hhh", "Current location is null. Using defaults.");
